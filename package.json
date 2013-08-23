@@ -2,7 +2,8 @@
   "name": "yofrontend",
   "version": "0.0.1",
   "dependencies": {
-    "express": "~3.3.5"
+    "express": "~3.3.5",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

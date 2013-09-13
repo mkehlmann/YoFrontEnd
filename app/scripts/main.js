@@ -4,7 +4,7 @@ require.config({
         Backbone: '../bower_components/backbone-amd/backbone-min',
         underscore: '../bower_components/underscore/underscore-min',
         bootstrap: 'vendor/bootstrap',
-        socketio: '/socket.io/socket.io.js'
+        socketio: './vendor/socket.io'
     },
     shim: {
         bootstrap: {

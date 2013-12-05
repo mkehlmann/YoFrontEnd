@@ -9,7 +9,12 @@ YoNode
 <strong>Front End: </strong>
 + Foundation 5
 + RequireJS
-+ BackboneJS
++ BackboneJS 
+
+<strong>Testing: </strong>
++ mocha
++ chai
++ expect
 
 <strong>Tooling: </strong>
 + grunt - build and deployment

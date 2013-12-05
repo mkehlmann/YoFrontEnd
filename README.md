@@ -1,6 +1,24 @@
 YoNode
 ==========
+<strong>Back End:</strong>
++ Node.js
++ ExpressJS
++ Socket.io
++ MongoDB
 
-Front End App scaffolded with yeoman, grunt, and bower
+<strong>Front End: </strong>
++ Foundation 5
++ RequireJS
++ BackboneJS 
 
-Server side nodejs (using express) and TBD for DB
+<strong>Testing: </strong>
++ mocha
++ chai
++ expect
+
+<strong>Tooling: </strong>
++ grunt - build and deployment
++ bower - front end dependency management
++ npm - server side dependency management
++ yeoman - app scaffolding
+

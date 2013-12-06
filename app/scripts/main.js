@@ -6,6 +6,9 @@ require.config({
         socketio: './vendor/socket.io'
     },
     shim: {
+        Backbone: {
+            deps: ['underscore']
+        },
         underscore: {
             deps: ['jquery'],
             exports: '_'
@@ -16,14 +19,17 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'underscore', 'Backbone', 'socketio'], function (app, $, _, Backbone, io) {
+require(['app', 'socketio', 'PostFeed'], function (app, $, Feed) {
     'use strict';
     // use app here
     console.log(app);
+    var posts = new Feed.Posts();
+    var feed = new Feed.PostFeed({collection: posts});
+
+    posts.fetch({reset: true});
 
     var socket = io.connect('http://localhost:8080/');
     socket.on('broadcasting', function (data) {
         console.log(data);
     });
-    console.log('Running jQuery %s', $().jquery);
 });

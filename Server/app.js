@@ -14,8 +14,6 @@ app.use(express.compress());
 
 app.use(express.static(path.normalize(__dirname + '/../app')));
 
-
-
 //API
 app.get('/api/Posts', controller.posts);
 

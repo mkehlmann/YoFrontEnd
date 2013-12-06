@@ -19,10 +19,9 @@ require.config({
     }
 });
 
-require(['app', 'socketio', 'PostFeed'], function (app, $, Feed) {
+require(['socketio', 'PostFeed'], function ($, Feed) {
     'use strict';
     // use app here
-    console.log(app);
     var posts = new Feed.Posts();
     var feed = new Feed.PostFeed({collection: posts});
 

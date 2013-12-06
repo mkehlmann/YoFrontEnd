@@ -10,12 +10,11 @@ var express = require('express'),
 	controller = require('./controller');
 
 mongoose.connect('mongodb://localhost/test');
+app.use(express.compress());
 
 app.use(express.static(path.normalize(__dirname + '/../app')));
 
-app.get('/', function(req, res){
-	res.send('hello world');
-});
+
 
 //API
 app.get('/api/Posts', controller.posts);

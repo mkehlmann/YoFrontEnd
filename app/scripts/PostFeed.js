@@ -11,12 +11,16 @@ define(['underscore', 'Backbone'], function (_, Backbone) {
 
 	var PostFeed = Backbone.View.extend({
 		el: '#PostFeed',
-		template: _.template($('#PostTemplate').html()),
+		template: _.template($('#FeedTemplate').html()),
 		initialize: function () {
-			this.collection.on('reset', this.render, this);
+			this.collection.on('reset', this.renderFeed, this);
+			this.collection.on('add', this.renderPost, this);
 		},
-		render: function () {
+		renderFeed: function () {
 			this.$el.prepend(this.template({posts: this.collection.toJSON()}));
+		},
+		renderPost: function (model) {
+			this.$el.prepend(_.template($('#PostTemplate').html(), model.toJSON()));
 		}
 	});
 

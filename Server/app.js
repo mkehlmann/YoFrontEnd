@@ -19,7 +19,9 @@ app.get('/api/Posts', controller.posts);
 
 io.sockets.on('connection', function (socket) {
 	socket.on('post', function (data) {
-		controller.addPost(data);
+		controller.addPost(data, function () {
+			io.sockets.emit('newPost', data);
+		});
 	});
 });
 

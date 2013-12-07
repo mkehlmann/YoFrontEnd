@@ -32,10 +32,15 @@ require(['socketio', 'jquery', 'PostFeed'], function (io, $, Feed) {
         console.log(data);
     });
 
-    $('#post').click(function() {
+    $('#post').click(function(e) {
+        e.preventDefault();
         socket.emit('post', {
             postedBy: $('#postedBy').val(),
             url: $('#url').val()
         });
+    });
+
+    socket.on('newPost', function (data) {
+        posts.add(data);
     });
 });

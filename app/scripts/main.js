@@ -19,7 +19,7 @@ require.config({
     }
 });
 
-require(['socketio', 'PostFeed'], function ($, Feed) {
+require(['socketio', 'jquery', 'PostFeed'], function (io, $, Feed) {
     'use strict';
     // use app here
     var posts = new Feed.Posts();
@@ -30,5 +30,12 @@ require(['socketio', 'PostFeed'], function ($, Feed) {
     var socket = io.connect('http://localhost:8080/');
     socket.on('broadcasting', function (data) {
         console.log(data);
+    });
+
+    $('#post').click(function() {
+        socket.emit('post', {
+            postedBy: $('#postedBy').val(),
+            url: $('#url').val()
+        });
     });
 });

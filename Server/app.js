@@ -18,8 +18,9 @@ app.use(express.static(path.normalize(__dirname + '/../app')));
 app.get('/api/Posts', controller.posts);
 
 io.sockets.on('connection', function (socket) {
-	socket.emit('broadcasting', {foo: 'baz'});
-	console.log('connected socket');
+	socket.on('post', function (data) {
+		controller.addPost(data);
+	});
 });
 
 server.listen(8080);

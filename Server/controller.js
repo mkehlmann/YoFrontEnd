@@ -6,3 +6,15 @@ exports.posts = function(req, res) {
 		res.json(docs);
 	});
 };
+
+exports.addPost = function (data, cb) {
+	Post.create({postedBy: data.postedBy, url: data.url}, function(err, doc) {
+		/* TODO update this */
+		if (err) {
+			console.log(err);
+		}
+		if (cb) {
+			cb();
+		}
+	});
+};

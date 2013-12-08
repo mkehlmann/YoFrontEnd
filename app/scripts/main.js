@@ -19,17 +19,18 @@ require.config({
     }
 });
 
-require(['socketio', 'jquery', 'PostFeed'], function (io, $, Feed) {
+require(['socketio', 'jquery', 'PostFeed', 'Users'], function (io, $, Feed, Users) {
     'use strict';
     // use app here
     var posts = new Feed.Posts();
     var feed = new Feed.PostFeed({collection: posts});
+    var users = new Users.UserCount();
 
     posts.fetch({reset: true});
 
     var socket = io.connect('http://localhost:8080/');
-    socket.on('broadcasting', function (data) {
-        console.log(data);
+    socket.on('usercount', function (data) {
+        users.render(data);
     });
 
     $('#post').click(function(e) {

@@ -18,6 +18,12 @@ app.use(express.static(path.normalize(__dirname + '/../app')));
 app.get('/api/Posts', controller.posts);
 
 io.sockets.on('connection', function (socket) {
+	io.sockets.emit('usercount', io.sockets.clients().length);
+
+	socket.on('disconnect', function () {
+		io.sockets.emit('usercount', io.sockets.clients().length - 1);
+	});
+
 	socket.on('post', function (data) {
 		controller.addPost(data, function () {
 			io.sockets.emit('newPost', data);
